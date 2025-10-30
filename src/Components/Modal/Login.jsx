@@ -6,8 +6,19 @@ import love from '../../assets/love.png'
 import avatar from '../../assets/avatar.png'
 import close from '../../assets/close.svg'
 import google from '../../assets/google.png'
+import { signInWithPopup } from 'firebase/auth'
+import { auth,provider } from '../Firebase/Firebase'
 
 const Login = ({ toggleModal, status }) => {
+  const handleClick=async()=>{
+    try {
+     const result= await signInWithPopup(auth,provider);
+      toggleModal();
+      console.log('user',result.user)
+    } catch (error) {
+      
+    }
+  }
   return (
     <div>
       <Modal
@@ -91,7 +102,7 @@ const Login = ({ toggleModal, status }) => {
 
         {/* Modal Body */}
         <ModalBody className="bg-white h-96 p-6 rounded-none">
-          <div className="flex items-center justify-center rounded-md border-2 border-solid border-gray-300 p-5 relative h-8 cursor-pointer hover:bg-teal-50 transition-colors">
+          <div onClick={handleClick} className="flex items-center justify-center rounded-md border-2 border-solid border-gray-300 p-5 relative h-8 cursor-pointer hover:bg-teal-50 transition-colors">
             <img src={google} className="w-7 absolute left-0" alt="Google logo" />
             <p className="text-sm text-gray-500">Continue with Google</p>
           </div>

@@ -7,7 +7,7 @@ import arrow from '../../assets/arrow-down.svg'
 import arrow_white from '../../assets/arrow-white.png'
 
 const Navbar = (props) => {
-    const{toggleModal}=props
+    const{toggleModal,toggleModalSell}=props
   return (
     <div>
       <nav className='fixed z-50 w-full overflow-auto p-2 pl-3 shadow-md gap-3
@@ -31,6 +31,8 @@ const Navbar = (props) => {
             <img src={arrow} className='w-5' alt=""/>
         </div>
         <p onClick={toggleModal} className='ml-5 font-bold cursor-pointer hover:underline'>login</p>
+        <br />
+        <p onClick={toggleModalSell} >sell</p>
       </nav>
     </div>
   )
