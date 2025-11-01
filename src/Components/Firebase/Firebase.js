@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getAuth,GoogleAuthProvider} from 'firebase/auth'
+import { getAuth, GoogleAuthProvider } from "firebase/auth";
 import { getStorage } from "firebase/storage";
-import { collection, getFirestore,getDocs } from "firebase/firestore";
+import { collection, getFirestore, getDocs } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBBJDkoGzKM-Yc6KZ_fKj1ghTvSsM5ufuo",
@@ -13,24 +13,27 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth=getAuth(app);
-const provider=new GoogleAuthProvider()
-const storage=getStorage()
-const firestore=getFirestore()
 
-const fetchFromFireStore=async ()=>{
-    try {
-        const productCOllection=collection(firestore,'products')
-        const productSnapshot=await getDocs(productCOllection)
-        const productList=productSnapshot.docs.map(doc=>({
-            id:doc.id,
-            ...doc.data()
-        }))
-        console.log('fetched products from firestore'.productList)
-        return productList
-    } catch (error) {
-        console.error('error fetching products from firestore: ',error)
-        return []
-    }
-}
-export {auth,provider,storage,firestore,fetchFromFireStore}
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+const storage = getStorage(app);
+const firestore = getFirestore(app);
+
+const fetchFromFireStore = async () => {
+  try {
+    const productCollection = collection(firestore, "products");
+    const productSnapshot = await getDocs(productCollection);
+    const productList = productSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    console.log("fetched products from Firestore:", productList);
+    return productList;
+  } catch (error) {
+    console.error(" Error fetching products from Firestore:", error);
+    return [];
+  }
+};
+
+export { auth, provider, storage, firestore, fetchFromFireStore };

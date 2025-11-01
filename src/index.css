@@ -2,4 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "flowbite"; /* if you manually import Flowbite CSS */
+/* Import Flowbite AFTER Tailwind */
+@import "flowbite/dist/flowbite.min.css";
+
