@@ -1,14 +1,22 @@
 import React from 'react'
 
-const Input = (Props) => {
-    const{setInput,placeholder}=Props
-
+const Input = ({ setInput, placeholder, value }) => {
   return (
     <div className='pt-4 w-full relative'>
-        <input onChange={e=>setInput(e.target.value)} type="text" placeholder=' '
-        className='w-full border-2 border-black rounded-md p-3 pt-4 pb-2 focus:outline-none peer' required/>
-        <label className='absolute pl-1 pr-1 left-[10px] top-2 bg-white text-sm transition-all duration-200 pointer-events-none'>{placeholder}</label>
-
+      <input
+        value={value}
+        onChange={e => setInput(e.target.value)}
+        type="text"
+        placeholder=' '
+        required
+        className='w-full border-2 border-black rounded-md p-3 pt-4 pb-2 focus:outline-none peer'
+      />
+      <label
+        className='absolute left-3 top-3 text-gray-500 bg-white px-1 transition-all duration-200
+                   peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
+                   peer-focus:top-1 peer-focus:text-sm peer-focus:text-black'>
+        {placeholder}
+      </label>
     </div>
   )
 }

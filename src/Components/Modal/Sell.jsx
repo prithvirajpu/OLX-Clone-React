@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal, ModalBody } from 'flowbite-react'
 import Input from '../Input/Input'
 import { UserAuth } from '../Context/Auth'
@@ -19,6 +19,7 @@ const Sell = (props) => {
 
   const auth = UserAuth();
 
+  
   const handleImageUpload = (e) => {
     if (e.target.files && e.target.files[0]) {
       setImage(e.target.files[0])
@@ -125,7 +126,7 @@ const Sell = (props) => {
         }}
       >
         <ModalBody
-          className="bg-white p-6 rounded-md overflow-x-hidden"
+          className="bg-white p-6 rounded-md overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           <img
