@@ -36,7 +36,8 @@ const Home = () => {
       <Navbar toggleModal={toggleModal} toggleModalSell={toggleModalSell} />
       <Login toggleModal={toggleModal} status={openModal} />
       <Sell setItems={setItems} toggleModalSell={toggleModalSell} status={openModalSell} />
-      <Card items={(items).items||[]}/>
+      <Card items={items || []} />
+
     </div>
   )
 }
