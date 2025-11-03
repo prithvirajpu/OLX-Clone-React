@@ -13,8 +13,10 @@ export const AuthProvider=({children})=>{
         })
         return unsubscribe
     },[]);
-    return (<AuthContext.Provider value={{user}}>
+    return (
+    <AuthContext.Provider value={{user}}>
         {children}
          
-    </AuthContext.Provider>)
+    </AuthContext.Provider>
+    )
 }

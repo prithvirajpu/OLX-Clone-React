@@ -20,9 +20,7 @@ const Details = () => {
       <Navbar toggleModalSell={toggleModalSell} toggleModal={toggleModal} />
       <Login toggleModal={toggleModal} status={openModal} />
 
-      {/* ✅ Main Layout */}
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-10 md:px-20 lg:px-32'>
-        {/* 🖼 Left - Image */}
         <div className='border-2 rounded-xl flex justify-center items-center overflow-hidden h-96 bg-gray-50'>
           <img
             className='object-cover w-full h-full'
@@ -31,7 +29,6 @@ const Details = () => {
           />
         </div>
 
-        {/* 📝 Right - Details */}
         <div className='flex flex-col justify-between'>
           <div>
             <p className='text-3xl font-bold mb-2'>₹{item?.price}</p>
@@ -42,7 +39,6 @@ const Details = () => {
             </p>
           </div>
 
-          {/* 👤 Seller Info */}
           <div className='flex justify-between items-center mt-6 text-sm text-gray-600'>
             <p><span className='font-semibold'>Seller:</span> {item?.userName}</p>
             <p>{item?.createdAt}</p>

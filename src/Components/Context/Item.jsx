@@ -4,7 +4,6 @@ import { firestore } from "../Firebase/Firebase";
 
 const Context = createContext(null);
 
-// ✅ Rename this to follow React hook naming conventions
 export const useItemsContext = () => useContext(Context);
 
 export const ItemsContextProvider = ({ children }) => {
