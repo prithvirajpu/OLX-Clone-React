@@ -1,24 +1,11 @@
-import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import { useItemsContext } from '../Context/Item';
-import Navbar from '../Navbar/Navbar';
-import Login from '../Modal/Login';
-import Sell from '../Modal/Sell';
 
 const Details = () => {
   const location = useLocation();
   const { item } = location.state || {};
-  const [openModal, setModal] = useState(false);
-  const [openModalSell, setModalSell] = useState(false);
-  const itemCtx = useItemsContext();
-
-  const toggleModal = () => setModal(!openModal);
-  const toggleModalSell = () => setModalSell(!openModalSell);
 
   return (
     <div>
-      <Navbar toggleModalSell={toggleModalSell} toggleModal={toggleModal} />
-      <Login toggleModal={toggleModal} status={openModal} />
 
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-10 md:px-20 lg:px-32'>
         <div className='border-2 rounded-xl flex justify-center items-center overflow-hidden h-96 bg-gray-50'>
@@ -45,8 +32,6 @@ const Details = () => {
           </div>
         </div>
       </div>
-
-      <Sell setItems={itemCtx.setItems} toggleModalSell={toggleModalSell} status={openModalSell} />
     </div>
   );
 };

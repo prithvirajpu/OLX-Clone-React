@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import './Home.css'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import Navbar from '../Components/Navbar/Navbar'
 import Login from '../Components/Modal/Login'
 import Sell from '../Components/Modal/Sell'
-import Card from '../Components/Card/Card'
+const Card=lazy(()=>import('../Components/Card/Card'))
 import { useItemsContext } from '../Components/Context/Item'
 import { fetchFromFireStore } from '../Components/Firebase/Firebase'
 
@@ -33,10 +32,9 @@ const Home = () => {
 
   return (
     <div>
-      <Navbar toggleModal={toggleModal} toggleModalSell={toggleModalSell} />
-      <Login toggleModal={toggleModal} status={openModal} />
-      <Sell setItems={setItems} toggleModalSell={toggleModalSell} status={openModalSell} />
+      <Suspense fallback={<div className="text-center mt-10">Loading Items ...</div>}>
       <Card items={items || []} />
+      </Suspense>
 
     </div>
   )

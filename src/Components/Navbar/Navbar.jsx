@@ -79,7 +79,6 @@ const Navbar = (props) => {
             My Ads
           </Link>
         )}
-        {/* your Sell button or other items */}
       </div>
 
         {!user ? (
